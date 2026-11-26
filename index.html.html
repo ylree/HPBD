@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>여림이의 생일 파티</title>
+<style>
+:root{--bg:#4a0f1f;--bg2:#2e0914;--card:#5c1628;--ink:#fbeee6;--sub:#d9b3b3;--gold:#e8c577;--line:#7a2a3f;--soft:#6e1f33;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]){--bg:#fbf0ec;--bg2:#f3dcd8;--card:#ffffff;--ink:#3a0f1a;--sub:#8a5560;--gold:#a8741f;--line:#e8c6c6;--soft:#f8e1de}}
+:root[data-theme="light"]{--bg:#fbf0ec;--bg2:#f3dcd8;--card:#ffffff;--ink:#3a0f1a;--sub:#8a5560;--gold:#a8741f;--line:#e8c6c6;--soft:#f8e1de}
+html{scroll-padding-top:env(safe-area-inset-top,0px);background:var(--bg2)}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(ellipse at top,var(--bg) 0%,var(--bg2) 75%);color:var(--ink);font-family:"Pretendard","Noto Sans KR",-apple-system,"Malgun Gothic",sans-serif;line-height:1.6;min-height:100vh}
+main{max-width:640px;margin:0 auto;padding:0 20px 56px}
+.hero{text-align:center;padding:56px 0 34px}
+.snow{letter-spacing:10px;color:var(--gold);font-size:14px;opacity:.85}
+.emoji{font-size:54px;margin-top:10px}
+.hero h1{font-size:30px;margin:10px 0 6px;letter-spacing:-.5px}
+.hero h1 span{color:var(--gold)}
+.hero p{color:var(--sub);margin:0}
+.chip{display:inline-block;margin-top:14px;padding:5px 14px;border:1px solid var(--gold);color:var(--gold);border-radius:999px;font-size:13px}
+section{margin-top:28px}
+h2{font-size:18px;margin:0 0 12px;color:var(--gold)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px 20px}
+.info{display:grid;gap:14px}
+.row{display:flex;gap:14px;align-items:flex-start}
+.ico{width:40px;height:40px;border-radius:12px;background:var(--soft);display:grid;place-items:center;font-size:20px;flex:none}
+.row b{display:block;font-size:13px;color:var(--sub);font-weight:600}
+.row span{font-size:16px}
+.tl{list-style:none;margin:0;padding:0 0 0 6px;border-left:2px dashed var(--line)}
+.tl li{position:relative;padding:0 0 18px 22px}
+.tl li:last-child{padding-bottom:0}
+.tl li::before{content:"";position:absolute;left:-8px;top:6px;width:14px;height:14px;border-radius:50%;background:var(--gold);border:3px solid var(--card)}
+.tl time{font-weight:700;color:var(--gold);font-size:14px}
+.tl div{font-size:16px}
+.tl small{color:var(--sub)}
+.msgs{display:grid;gap:12px}
+.msg{border-left:3px solid var(--gold)}
+.msg p{margin:0 0 8px}
+.msg cite{font-style:normal;font-size:14px;color:var(--sub)}
+footer{text-align:center;color:var(--sub);margin-top:36px;font-size:14px}
+</style>
+</head>
+<body>
+<main>
+  <div class="hero">
+    <div class="snow">✦ ❄ ✦ ❄ ✦</div>
+    <div class="emoji">🍷</div>
+    <h1><span>이여림</span>의 생일 파티</h1>
+    <p>1993. 11. 29 · 올해도 따뜻하게, 함께 🎂</p>
+    <span class="chip">Family Birthday Party</span>
+  </div>
+
+  <section>
+    <h2>📍 모임 안내</h2>
+    <div class="card info">
+      <div class="row"><div class="ico">📅</div><div><b>일시</b><span>11월 29일 (일) 오후 6:00</span></div></div>
+      <div class="row"><div class="ico">🍽️</div><div><b>장소</b><span>OO식당 (서울 OO구 OO로 12)</span></div></div>
+      <div class="row"><div class="ico">💬</div><div><b>참고</b><span>케이크는 우리가 챙길게요. 몸만 오세요!</span></div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>⏰ 오늘의 일정</h2>
+    <div class="card">
+      <ul class="tl">
+        <li><time>18:00</time><div>모이기 & 인사 <small>— 도착하면 자리에 앉아요</small></div></li>
+        <li><time>18:30</time><div>저녁 식사 & 와인 한 잔 🍷</div></li>
+        <li><time>19:30</time><div>케이크 촛불 끄기 🕯️ <small>— 노래 준비!</small></div></li>
+        <li><time>20:00</time><div>선물 증정 & 축하 메시지 낭독</div></li>
+        <li><time>20:30</time><div>가족사진 찰칵 📸</div></li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>💌 여림이에게</h2>
+    <div class="msgs">
+      <div class="card msg"><p>여림아, 생일 진짜 축하해! 항상 옆에서 웃게 해줘서 고마워. 올해도 건강하고 행복하자.</p><cite>— 가족이</cite></div>
+      <div class="card msg"><p>우리 여림이 벌써 이렇게 컸네. 하고 싶은 거 다 하면서 멋지게 살아라!</p><cite>— 엄마가</cite></div>
+      <div class="card msg"><p>생일 축하한다. 늘 자랑스럽고, 오늘 맛있는 건 내가 쏜다.</p><cite>— 아빠가</cite></div>
+    </div>
+  </section>
+
+  <footer>✦ Happy Birthday, 여림 ✦</footer>
+</main>
+</body>
+</html>
