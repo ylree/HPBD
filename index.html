@@ -7,105 +7,203 @@
 <title>여림이의 생일 파티</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Hahmlet:wght@500;700&family=Playfair+Display:ital,wght@1,500&family=Cinzel:wght@600&family=Song+Myung&display=swap" rel="stylesheet">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Gowun+Batang:wght@400;700&family=Great+Vibes&family=Noto+Serif+KR:wght@600;700;900&display=swap" rel="stylesheet">
 <style>
-:root{--w1:#2a0610;--w2:#4a0f1f;--w3:#6b1a2e;--card:rgba(120,28,50,.55);--ink:#fbeee6;--sub:#e0b9bb;--gold:#ecc97f;--line:rgba(236,201,127,.28);
-box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+:root{
+  --w1:#26050e;--w2:#470d1d;--w3:#6e1830;
+  --card:rgba(115,24,46,.58);--ink:#fdf2eb;--sub:#e5c2c4;
+  --gold:#f0cf85;--gold-light:#fff3c4;--gold-dark:#b88936;
+  --line:rgba(240,207,133,.32);
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
 html{scroll-padding-top:env(safe-area-inset-top,0px);background:var(--w1)}
 *{box-sizing:border-box}
-body{margin:0;color:var(--ink);font-family:"Pretendard","Noto Sans KR",-apple-system,"Malgun Gothic",sans-serif;line-height:1.6;min-height:100vh;
-background:radial-gradient(ellipse at 50% 0%,var(--w3) 0%,var(--w2) 40%,var(--w1) 100%) fixed}
+body{
+  margin:0;color:var(--ink);
+  font-family:"Pretendard","Noto Sans KR",-apple-system,"Malgun Gothic",sans-serif;
+  line-height:1.65;min-height:100vh;
+  background:radial-gradient(ellipse at 50% 0%,var(--w3) 0%,var(--w2) 42%,var(--w1) 100%) fixed;
+}
 #snow{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:0}
-.f{position:absolute;top:-20px;color:#fff;opacity:.75;animation:fall linear infinite}
+.f{position:absolute;top:-20px;color:#fff6e5;opacity:.72;animation:fall linear infinite}
 @keyframes fall{to{transform:translateY(105vh) translateX(30px)}}
-.lights{height:26px;margin:0 -20px;background:radial-gradient(circle at 12px 12px,var(--gold) 0 3px,transparent 4px) 0 0/36px 26px repeat-x,radial-gradient(circle at 30px 16px,#ff8a8a 0 3px,transparent 4px) 0 0/36px 26px repeat-x;animation:tw 2.4s ease-in-out infinite alternate;filter:drop-shadow(0 0 4px rgba(236,201,127,.8))}
+.lights{
+  height:26px;margin:0 -20px;
+  background:
+    radial-gradient(circle at 12px 12px,var(--gold-light) 0 3px,transparent 4.5px) 0 0/36px 26px repeat-x,
+    radial-gradient(circle at 30px 16px,#ff8f8f 0 3px,transparent 4.5px) 0 0/36px 26px repeat-x;
+  animation:tw 2.2s ease-in-out infinite alternate;
+  filter:drop-shadow(0 0 6px rgba(240,207,133,.85));
+}
 @keyframes tw{from{opacity:.55}to{opacity:1}}
 main{position:relative;z-index:1;max-width:640px;margin:0 auto;padding:0 20px 56px}
+
+/* Hero & Festive Gold Typography */
 .hero{text-align:center;padding:30px 0 28px}
-.dday{display:inline-block;padding:4px 14px;border:1px solid var(--gold);color:var(--gold);border-radius:999px;font-size:13px;letter-spacing:1px}
-.photo{width:min(90%,400px);aspect-ratio:4/5;margin:22px auto 0;border-radius:999px 999px 28px 28px;border:3px solid var(--gold);overflow:hidden;background:linear-gradient(160deg,var(--w3),var(--w1));box-shadow:0 0 0 8px rgba(236,201,127,.12),0 14px 40px rgba(0,0,0,.45);display:grid;place-items:center;font-size:64px}
+.dday{
+  display:inline-block;padding:5px 16px;
+  border:1px solid var(--gold);color:var(--gold-light);
+  border-radius:999px;font-family:"Cinzel",Georgia,serif;
+  font-size:13px;font-weight:700;letter-spacing:2.5px;
+  background:rgba(240,207,133,.1);
+  box-shadow:0 0 14px rgba(240,207,133,.22);
+}
+.photo{
+  width:min(90%,400px);aspect-ratio:4/5;margin:22px auto 0;
+  border-radius:999px 999px 28px 28px;border:3px solid var(--gold);
+  overflow:hidden;background:linear-gradient(160deg,var(--w3),var(--w1));
+  box-shadow:0 0 0 8px rgba(240,207,133,.14),0 16px 42px rgba(0,0,0,.48);
+  display:grid;place-items:center;font-size:64px;
+}
 .photo img{width:100%;height:100%;object-fit:cover;display:block}
-.hero h1{font-family:"Hahmlet","Noto Serif KR",serif;font-weight:700;font-size:31px;margin:22px 0 6px;letter-spacing:2px}
-.hero h1 span{color:var(--gold)}
+.gold-text{
+  background:linear-gradient(135deg,#fff3c4 0%,#ecc97f 45%,#d4a24c 75%,#fff0bd 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 2px 10px rgba(236,201,127,.32));
+}
+.hero h1{
+  font-family:"Noto Serif KR",serif;font-weight:900;
+  font-size:33px;margin:24px 0 4px;letter-spacing:2px;line-height:1.3;
+  color:var(--ink);text-shadow:0 3px 14px rgba(0,0,0,.35);
+}
+.hero h1 span{
+  background:linear-gradient(135deg,#fff4c8 0%,#f0cf85 45%,#d9a84e 80%,#fff2be 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 0 12px rgba(240,207,133,.45));
+}
 .hero p{color:var(--sub);margin:0}
-.hero p.wel{font-family:"Playfair Display",Georgia,serif;font-style:italic;font-weight:500;font-size:26px;line-height:1.3;letter-spacing:3px;color:var(--gold);text-shadow:0 0 14px rgba(236,201,127,.35)}
-h2{font-family:"Hahmlet","Noto Serif KR",serif;font-weight:700;letter-spacing:1px}
-.msg p{font-family:"Song Myung","Noto Serif KR",serif;font-size:18px}
-.tl time,.dday{font-family:"Cinzel",Georgia,serif;font-size:14px;letter-spacing:2px}
-.orn{color:var(--gold);letter-spacing:10px;font-size:14px;margin-top:14px}
+.hero p.wel{
+  font-family:"Great Vibes",cursive;font-weight:400;
+  font-size:44px;line-height:1.2;letter-spacing:1.5px;
+  margin-top:4px;
+  background:linear-gradient(135deg,#fff6d1 0%,#f0cf85 50%,#d49e42 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 0 14px rgba(240,207,133,.45));
+}
+.orn{color:var(--gold);letter-spacing:10px;font-size:14px;margin-top:10px;opacity:.9}
+.hero p.when{
+  margin-top:12px;font-size:15px;font-family:"Gowun Batang",serif;
+  color:var(--ink);letter-spacing:.3px;
+}
+
+/* Navigation Tiles */
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:6px}
+.tile{
+  display:flex;flex-direction:column;align-items:center;gap:4px;
+  padding:22px 10px;background:var(--card);border:1px solid var(--line);
+  border-radius:22px;text-decoration:none;color:var(--ink);
+  backdrop-filter:blur(6px);transition:transform .15s,border-color .15s,box-shadow .15s;
+  -webkit-tap-highlight-color:transparent;
+}
+.tile:hover{border-color:var(--gold);box-shadow:0 8px 24px rgba(0,0,0,.25)}
+.tile:active{transform:scale(.97)}
+.ti{
+  width:58px;height:58px;border-radius:50%;display:grid;place-items:center;
+  font-size:28px;background:rgba(240,207,133,.16);border:1px solid var(--line);margin-bottom:6px;
+}
+.tile b{font-family:"Noto Serif KR",serif;font-size:17px;font-weight:700;letter-spacing:.5px}
+.tile small{color:var(--sub);font-size:12.5px}
+
+/* Sections & Cards */
 section{margin-top:28px}
-h2{font-size:18px;margin:0 0 12px;color:var(--gold)}
-.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px 20px;backdrop-filter:blur(6px)}
+h2{font-family:"Noto Serif KR",serif;font-weight:700;font-size:18px;margin:0 0 12px;color:var(--gold);letter-spacing:.8px}
+h2.vt{
+  font-family:"Noto Serif KR",serif;font-weight:900;font-size:23px;
+  margin:6px 0 16px;letter-spacing:1px;
+  background:linear-gradient(135deg,#fff3c4 0%,#f0cf85 55%,#d4a24c 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.card{
+  background:var(--card);border:1px solid var(--line);
+  border-radius:18px;padding:18px 20px;backdrop-filter:blur(6px);
+  box-shadow:0 8px 24px rgba(0,0,0,.2);
+}
 .info{display:grid;gap:14px}
 .row{display:flex;gap:14px;align-items:flex-start}
-.ico{width:40px;height:40px;border-radius:12px;background:rgba(236,201,127,.15);display:grid;place-items:center;font-size:20px;flex:none}
-.row b{display:block;font-size:13px;color:var(--sub);font-weight:600}
-.row span{font-size:16px}
+.ico{
+  width:40px;height:40px;border-radius:12px;
+  background:rgba(240,207,133,.16);display:grid;place-items:center;font-size:20px;flex:none;
+}
+.row b{display:block;font-size:12.5px;color:var(--sub);font-weight:600}
+.row span{font-size:15.5px}
+
+/* Timeline */
 .tl{list-style:none;margin:0;padding:0 0 0 6px;border-left:2px dashed var(--line)}
 .tl li{position:relative;padding:0 0 18px 22px}
 .tl li:last-child{padding-bottom:0}
-.tl li::before{content:"";position:absolute;left:-8px;top:6px;width:14px;height:14px;border-radius:50%;background:var(--gold);box-shadow:0 0 8px var(--gold)}
-.tl time{font-weight:700;color:var(--gold);font-size:14px}
+.tl li::before{
+  content:"";position:absolute;left:-8px;top:6px;width:14px;height:14px;
+  border-radius:50%;background:var(--gold);box-shadow:0 0 10px var(--gold);
+}
+.tl time{font-family:"Cinzel",Georgia,serif;font-weight:700;color:var(--gold-light);font-size:14.5px;letter-spacing:1.8px}
 .tl small{color:var(--sub)}
+.pin{text-decoration:none;font-size:15px}
+
+/* Messages */
 .msgs{display:grid;gap:12px}
 .msg{border-left:3px solid var(--gold)}
-.msg p{margin:0 0 8px}
-.msg cite{font-style:normal;font-size:14px;color:var(--sub)}
-footer{text-align:center;color:var(--sub);margin-top:36px;font-size:14px}
-.cake{text-align:center}
-.cakewrap{position:relative}
-.cakebtn{background:none;border:0;padding:0;cursor:pointer;width:min(82%,320px);display:block;margin:0 auto;-webkit-tap-highlight-color:transparent}
-.cakebtn svg{width:100%;height:auto;display:block;filter:drop-shadow(0 10px 24px rgba(0,0,0,.45))}
-.flame{transform-box:fill-box;transform-origin:50% 100%;animation:flick .9s ease-in-out infinite alternate}
-.glow{animation:glw 1.4s ease-in-out infinite alternate}
-@keyframes flick{0%{transform:scale(1,1) rotate(-3deg)}50%{transform:scale(.92,1.1) rotate(2deg)}100%{transform:scale(1.05,.95) rotate(-1deg)}}
-@keyframes glw{from{opacity:.55}to{opacity:1}}
-.flames{transition:opacity .35s}
-.out .flames{opacity:0}
-.cakehint{color:var(--sub);margin:12px 0 0;font-size:15px}
-.sp{position:absolute;top:28%;color:var(--gold);font-size:16px;opacity:0;pointer-events:none;animation:rise 1.6s ease-out forwards}
-@keyframes rise{0%{opacity:0;transform:translate(0,10px)}20%{opacity:1}100%{opacity:0;transform:translate(var(--dx),-90px)}}
-.pin{text-decoration:none;font-size:15px}
+.msg p{font-family:"Gowun Batang",serif;font-size:17px;line-height:1.75;margin:0 0 10px}
+.msg cite{font-style:normal;font-size:13.5px;color:var(--gold);font-family:"Noto Serif KR",serif}
+
+/* Route Maps */
 .map iframe{width:100%;height:220px;border:0;border-radius:12px;margin-top:12px}
 .maphead{display:flex;gap:12px;align-items:center}
-.maphead b{display:block;font-family:"Hahmlet","Noto Serif KR",serif;font-weight:700}
-.maphead span{color:var(--sub);font-size:14px}
+.maphead b{display:block;font-family:"Noto Serif KR",serif;font-weight:700;font-size:16px}
+.maphead span{color:var(--sub);font-size:13.5px}
 .compass{width:42px;height:42px;flex:none}
 .needle{transform-box:fill-box;transform-origin:50% 50%;animation:swing 3s ease-in-out infinite alternate}
 @keyframes swing{from{transform:rotate(-28deg)}to{transform:rotate(28deg)}}
 .mapbtns{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
-.mapbtns a{flex:1;min-width:92px;text-align:center;padding:8px 10px;border:1px solid var(--gold);border-radius:999px;color:var(--gold);text-decoration:none;font-size:14px}
+.mapbtns a{
+  flex:1;min-width:92px;text-align:center;padding:8px 10px;
+  border:1px solid var(--gold);border-radius:999px;
+  color:var(--gold-light);text-decoration:none;font-size:13.5px;
+  background:rgba(240,207,133,.08);
+}
+
+/* Weather Tab */
+.w-card{display:grid;gap:14px}
+.w-top{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.w-loc b{display:block;font-family:"Noto Serif KR",serif;font-size:17px;color:var(--gold-light)}
+.w-loc small{color:var(--sub);font-size:13px}
+.w-main{display:flex;align-items:center;gap:10px;text-align:right}
+.w-ico{font-size:36px;line-height:1}
+.w-temp{font-family:"Cinzel",Georgia,serif;font-size:20px;font-weight:700;color:var(--ink)}
+.w-desc{font-size:13px;color:var(--sub)}
+.w-hours{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;padding-top:10px;border-top:1px solid var(--line)}
+.w-h{
+  text-align:center;padding:10px 4px;border-radius:12px;
+  background:rgba(42,6,16,.42);border:1px solid rgba(240,207,133,.16);
+}
+.w-h time{display:block;font-family:"Cinzel",Georgia,serif;font-size:12px;color:var(--gold);margin-bottom:4px}
+.w-h .hi{font-size:20px;line-height:1.2}
+.w-h .ht{display:block;font-size:14px;font-weight:700;margin-top:3px}
+.w-h .hp{display:block;font-size:11.5px;color:var(--sub)}
+.w-tip{
+  padding:14px 16px;border-radius:14px;
+  background:rgba(240,207,133,.12);border:1px solid var(--line);
+  font-family:"Gowun Batang",serif;font-size:15px;line-height:1.65;
+}
+.w-tip b{color:var(--gold-light);font-family:"Noto Serif KR",serif}
+.w-meta{display:flex;justify-content:space-between;align-items:center;font-size:12.5px;color:var(--sub);margin-top:4px}
+.w-refresh{
+  background:rgba(240,207,133,.14);border:1px solid var(--gold);color:var(--gold-light);
+  border-radius:999px;padding:5px 12px;font-size:12.5px;cursor:pointer;font-family:inherit;
+}
+.w-loading{text-align:center;padding:24px 10px;color:var(--sub);font-size:14.5px}
+
+/* Navigation & Footer */
 .view{animation:vin .35s ease}
 @keyframes vin{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
-.tiles{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:6px}
-.tile{display:flex;flex-direction:column;align-items:center;gap:4px;padding:22px 10px;background:var(--card);border:1px solid var(--line);border-radius:22px;text-decoration:none;color:var(--ink);backdrop-filter:blur(6px);transition:transform .15s,border-color .15s;-webkit-tap-highlight-color:transparent}
-.tile:hover{border-color:var(--gold)}
-.tile:active{transform:scale(.97)}
-.ti{width:58px;height:58px;border-radius:50%;display:grid;place-items:center;font-size:28px;background:rgba(236,201,127,.15);border:1px solid var(--line);margin-bottom:6px}
-.tile b{font-family:"Hahmlet","Noto Serif KR",serif;font-size:17px;font-weight:700}
-.tile small{color:var(--sub);font-size:13px}
-.hero p.when{margin-top:12px;font-size:14px}
-.back{display:inline-block;margin:18px 0 6px;color:var(--gold);text-decoration:none;font-size:15px}
-h2.vt{font-size:22px;margin:6px 0 16px}
-.trip{margin-bottom:14px}
-.car{font-size:28px;width:42px;text-align:center;flex:none}
-.tripnote{margin:12px 0 0;font-size:14px;color:var(--sub)}
-.tips{margin:12px 0 0;padding:0;list-style:none;font-size:14px;color:var(--sub);display:grid;gap:4px}
-.copy{margin-top:12px;width:100%;padding:8px 10px;background:none;border:1px dashed var(--gold);border-radius:999px;color:var(--gold);font:inherit;font-size:14px;cursor:pointer}
-.compose{display:grid;gap:10px}
-.compose input,.compose textarea{width:100%;background:rgba(0,0,0,.25);border:1px solid var(--line);border-radius:12px;padding:10px 12px;color:var(--ink);font:inherit;font-size:16px;resize:vertical}
-.compose input::placeholder,.compose textarea::placeholder{color:var(--sub);opacity:.8}
-.compose input:focus,.compose textarea:focus{outline:none;border-color:var(--gold)}
-.emojis{display:flex;flex-wrap:wrap;gap:6px}
-.em{font-size:22px;line-height:1;padding:5px 6px;background:rgba(236,201,127,.12);border:1px solid var(--line);border-radius:10px;cursor:pointer;-webkit-tap-highlight-color:transparent}
-.em:active{transform:scale(.9)}
-.cbar{display:flex;justify-content:space-between;align-items:center}
-.cbar span{color:var(--sub);font-size:13px}
-#msend{background:var(--gold);color:#3a0f1a;border:0;border-radius:999px;padding:9px 20px;font:inherit;font-weight:700;cursor:pointer}
-#msend:disabled{opacity:.5}
-.mnote{margin:0;font-size:13px;color:var(--sub);min-height:1em}
-#mlist{margin-top:14px}
-@media (prefers-reduced-motion: reduce){.f,.lights,.flame,.glow,.sp,.needle,.view{animation:none}}
+.back{display:inline-block;margin:18px 0 6px;color:var(--gold-light);text-decoration:none;font-size:15px;font-weight:600}
+footer{
+  text-align:center;color:var(--gold);margin-top:36px;
+  font-family:"Cinzel",Georgia,serif;font-size:13px;letter-spacing:2px;opacity:.85;
+}
+@media (prefers-reduced-motion: reduce){.f,.lights,.needle,.view{animation:none}}
 </style>
 </head>
 <body>
@@ -126,9 +224,9 @@ h2.vt{font-size:22px;margin:6px 0 16px}
       <a class="tile" href="#schedule"><span class="ti">⏰</span><b>일정</b><small>11/28 타임라인</small></a>
       <a class="tile" href="#route"><span class="ti">🧭</span><b>오는길</b><small>강남집 · 스타필드</small></a>
       <a class="tile" href="#messages"><span class="ti">💌</span><b>여림이에게</b><small>축하 메시지</small></a>
-      <a class="tile" href="#wish"><span class="ti">🎂</span><b>소원 빌기</b><small>촛불 불어보기</small></a>
+      <a class="tile" href="#weather"><span class="ti">🌤️</span><b>파티 날씨</b><small>11/28 강남 · 하남</small></a>
     </nav>
-    <footer>✦ Happy Birthday, 여림 ✦</footer>
+    <footer>✦ Happy Birthday, Yeorim ✦</footer>
   </div>
 
   <div class="view" id="v-schedule" hidden>
@@ -154,27 +252,14 @@ h2.vt{font-size:22px;margin:6px 0 16px}
   <div class="view" id="v-route" hidden>
     <a class="back" href="#home">← 홈으로</a>
     <h2 class="vt">🧭 오는길</h2>
-    <div class="card trip">
-      <div class="maphead"><span class="car">🚗</span><div><b>동탄 → 강남집 오는길</b><span>출발지 경기도 화성시 동탄반석로 42</span></div></div>
-      <p class="tripnote">실시간 교통상황과 예상 소요시간은 아래 버튼을 누르면 지도 앱에서 바로 확인할 수 있어요. 출발하는 시각에 눌러야 가장 정확해요.</p>
-      <div class="mapbtns">
-        <a href="https://map.kakao.com/?sName=%EA%B2%BD%EA%B8%B0%EB%8F%84%20%ED%99%94%EC%84%B1%EC%8B%9C%20%EB%8F%99%ED%83%84%EB%B0%98%EC%84%9D%EB%A1%9C%2042&amp;eName=%EC%84%9C%EC%9A%B8%20%EA%B0%95%EB%82%A8%EA%B5%AC%20%EB%8F%84%EC%82%B0%EB%8C%80%EB%A1%9C54%EA%B8%B8%2051" target="_blank" rel="noopener">🚗 카카오맵 길찾기</a>
-        <a href="https://www.google.com/maps/dir/?api=1&amp;origin=%EA%B2%BD%EA%B8%B0%EB%8F%84%20%ED%99%94%EC%84%B1%EC%8B%9C%20%EB%8F%99%ED%83%84%EB%B0%98%EC%84%9D%EB%A1%9C%2042&amp;destination=%EC%84%9C%EC%9A%B8%20%EA%B0%95%EB%82%A8%EA%B5%AC%20%EB%8F%84%EC%82%B0%EB%8C%80%EB%A1%9C54%EA%B8%B8%2051&amp;travelmode=transit" target="_blank" rel="noopener">🚇 구글지도 대중교통</a>
-      </div>
-      <ul class="tips">
-        <li>🚇 GTX-A 동탄 → 수서는 약 20분이에요. 수서에서 강남집까지는 환승이 필요해요.</li>
-        <li>🕐 13:00 집결이니, 출발 전에 소요시간을 꼭 확인해 보세요.</li>
-      </ul>
-      <button class="copy" type="button" data-copy="경기도 화성시 동탄반석로 42">출발지 주소 복사</button>
-    </div>
     <div class="msgs">
       <div class="card map" id="loc-gangnam">
-        <div class="maphead"><svg class="compass" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="18" fill="none" stroke="#ecc97f" stroke-width="2"/><text x="20" y="9" font-size="7" text-anchor="middle" fill="#ecc97f" font-family="Georgia,serif">N</text><g class="needle"><polygon points="20,11 23.5,20 16.5,20" fill="#ff8a8a"/><polygon points="20,29 23.5,20 16.5,20" fill="#ecc97f"/></g><circle cx="20" cy="20" r="2" fill="#2a0610"/></svg><div><b>강남집 · 13:00 집결</b><span>서울 강남구 도산대로54길 51</span></div></div>
+        <div class="maphead"><svg class="compass" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="18" fill="none" stroke="#f0cf85" stroke-width="2"/><text x="20" y="9" font-size="7" text-anchor="middle" fill="#f0cf85" font-family="Georgia,serif">N</text><g class="needle"><polygon points="20,11 23.5,20 16.5,20" fill="#ff8a8a"/><polygon points="20,29 23.5,20 16.5,20" fill="#f0cf85"/></g><circle cx="20" cy="20" r="2" fill="#26050e"/></svg><div><b>강남집 · 13:00 집결</b><span>서울 강남구 도산대로54길 51</span></div></div>
         <iframe src="https://www.google.com/maps?q=%EC%84%9C%EC%9A%B8%20%EA%B0%95%EB%82%A8%EA%B5%AC%20%EB%8F%84%EC%82%B0%EB%8C%80%EB%A1%9C54%EA%B8%B8%2051&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="강남집 · 13:00 집결 지도"></iframe>
         <div class="mapbtns"><a href="https://map.naver.com/p/search/%EC%84%9C%EC%9A%B8%20%EA%B0%95%EB%82%A8%EA%B5%AC%20%EB%8F%84%EC%82%B0%EB%8C%80%EB%A1%9C54%EA%B8%B8%2051" target="_blank" rel="noopener">네이버지도</a><a href="https://map.kakao.com/?q=%EC%84%9C%EC%9A%B8%20%EA%B0%95%EB%82%A8%EA%B5%AC%20%EB%8F%84%EC%82%B0%EB%8C%80%EB%A1%9C54%EA%B8%B8%2051" target="_blank" rel="noopener">카카오맵</a><a href="https://www.google.com/maps/search/?api=1&amp;query=%EC%84%9C%EC%9A%B8%20%EA%B0%95%EB%82%A8%EA%B5%AC%20%EB%8F%84%EC%82%B0%EB%8C%80%EB%A1%9C54%EA%B8%B8%2051" target="_blank" rel="noopener">구글지도</a></div>
       </div>
       <div class="card map" id="loc-hanam">
-        <div class="maphead"><svg class="compass" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="18" fill="none" stroke="#ecc97f" stroke-width="2"/><text x="20" y="9" font-size="7" text-anchor="middle" fill="#ecc97f" font-family="Georgia,serif">N</text><g class="needle"><polygon points="20,11 23.5,20 16.5,20" fill="#ff8a8a"/><polygon points="20,29 23.5,20 16.5,20" fill="#ecc97f"/></g><circle cx="20" cy="20" r="2" fill="#2a0610"/></svg><div><b>스타필드 하남 · 15:00 쇼핑</b><span>경기 하남시 미사대로 750</span></div></div>
+        <div class="maphead"><svg class="compass" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="18" fill="none" stroke="#f0cf85" stroke-width="2"/><text x="20" y="9" font-size="7" text-anchor="middle" fill="#f0cf85" font-family="Georgia,serif">N</text><g class="needle"><polygon points="20,11 23.5,20 16.5,20" fill="#ff8a8a"/><polygon points="20,29 23.5,20 16.5,20" fill="#f0cf85"/></g><circle cx="20" cy="20" r="2" fill="#26050e"/></svg><div><b>스타필드 하남 · 15:00 쇼핑</b><span>경기 하남시 미사대로 750</span></div></div>
         <iframe src="https://www.google.com/maps?q=%EC%8A%A4%ED%83%80%ED%95%84%EB%93%9C%20%ED%95%98%EB%82%A8&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="스타필드 하남 · 15:00 쇼핑 지도"></iframe>
         <div class="mapbtns"><a href="https://map.naver.com/p/search/%EC%8A%A4%ED%83%80%ED%95%84%EB%93%9C%20%ED%95%98%EB%82%A8" target="_blank" rel="noopener">네이버지도</a><a href="https://map.kakao.com/?q=%EC%8A%A4%ED%83%80%ED%95%84%EB%93%9C%20%ED%95%98%EB%82%A8" target="_blank" rel="noopener">카카오맵</a><a href="https://www.google.com/maps/search/?api=1&amp;query=%EC%8A%A4%ED%83%80%ED%95%84%EB%93%9C%20%ED%95%98%EB%82%A8" target="_blank" rel="noopener">구글지도</a></div>
       </div>
@@ -184,47 +269,30 @@ h2.vt{font-size:22px;margin:6px 0 16px}
   <div class="view" id="v-messages" hidden>
     <a class="back" href="#home">← 홈으로</a>
     <h2 class="vt">💌 여림이에게</h2>
-    <div class="card compose">
-      <input id="mname" type="text" maxlength="20" placeholder="이름 (예: 엄마, 큰누나)" autocomplete="off">
-      <div class="emojis" aria-label="이모티콘"><button type="button" class="em" data-e="🎂">🎂</button><button type="button" class="em" data-e="🎉">🎉</button><button type="button" class="em" data-e="🥳">🥳</button><button type="button" class="em" data-e="🥂">🥂</button><button type="button" class="em" data-e="🍷">🍷</button><button type="button" class="em" data-e="🎁">🎁</button><button type="button" class="em" data-e="🎈">🎈</button><button type="button" class="em" data-e="✨">✨</button><button type="button" class="em" data-e="❤️">❤️</button><button type="button" class="em" data-e="🥰">🥰</button><button type="button" class="em" data-e="😘">😘</button><button type="button" class="em" data-e="😆">😆</button><button type="button" class="em" data-e="👏">👏</button><button type="button" class="em" data-e="🙏">🙏</button><button type="button" class="em" data-e="💐">💐</button><button type="button" class="em" data-e="🔥">🔥</button><button type="button" class="em" data-e="🍀">🍀</button><button type="button" class="em" data-e="⭐">⭐</button></div>
-      <textarea id="mtext" rows="4" maxlength="300" placeholder="여림이에게 축하 메시지를 남겨 주세요 ✨"></textarea>
-      <div class="cbar"><span id="mcount">0/300</span><button type="button" id="msend">💌 남기기</button></div>
-      <p class="mnote" id="mnote"></p>
+    <div class="msgs">
+      <div class="card msg"><p>여림아, 생일 진짜 축하해! 항상 옆에서 웃게 해줘서 고마워. 올해도 건강하고 행복하자.</p><cite>— 가족이</cite></div>
+      <div class="card msg"><p>우리 여림이 벌써 이렇게 컸네. 하고 싶은 거 다 하면서 멋지게 살아라!</p><cite>— 엄마가</cite></div>
+      <div class="card msg"><p>생일 축하한다. 늘 자랑스럽고, 오늘 맛있는 건 내가 쏜다.</p><cite>— 아빠가</cite></div>
     </div>
-    <div class="msgs" id="mlist"></div>
   </div>
 
-  <div class="view cake" id="v-wish" hidden>
-    <a class="back" href="#home" style="float:left">← 홈으로</a>
-    <div style="clear:both"></div>
-    <h2 class="vt">🕯️ 소원을 빌어봐요</h2>
-    <div class="cakewrap" id="cakewrap">
-      <button class="cakebtn" id="cake" type="button" aria-label="촛불 불어서 끄기">
-        <svg viewBox="0 0 300 250" aria-hidden="true">
-          <defs>
-            <radialGradient id="gl"><stop offset="0" stop-color="#ffd978" stop-opacity=".85"/><stop offset="1" stop-color="#ffd978" stop-opacity="0"/></radialGradient>
-            <linearGradient id="fl" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#ff9d3c"/><stop offset="1" stop-color="#fff3a8"/></linearGradient>
-            <linearGradient id="gd" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#b98a3a"/><stop offset=".5" stop-color="#f3d78d"/><stop offset="1" stop-color="#b98a3a"/></linearGradient>
-          </defs>
-          <ellipse cx="150" cy="233" rx="130" ry="12" fill="url(#gd)"/>
-          <rect x="45" y="150" width="210" height="82" rx="14" fill="#fff1e4"/>
-          <rect x="45" y="176" width="210" height="10" fill="#c43a5a"/>
-          <circle cx="65" cy="212" r="4.5" fill="#e8c577" opacity=".85"/><circle cx="95" cy="212" r="4.5" fill="#e8c577" opacity=".85"/><circle cx="125" cy="212" r="4.5" fill="#e8c577" opacity=".85"/><circle cx="155" cy="212" r="4.5" fill="#e8c577" opacity=".85"/><circle cx="185" cy="212" r="4.5" fill="#e8c577" opacity=".85"/><circle cx="215" cy="212" r="4.5" fill="#e8c577" opacity=".85"/><circle cx="245" cy="212" r="4.5" fill="#e8c577" opacity=".85"/>
-          <rect x="80" y="108" width="140" height="50" rx="12" fill="#fff8f0"/>
-          <path d="M80 120 Q80 106 94 106 H206 Q220 106 220 120 V124 Q213 140 206 124 Q199 134 192 124 H108 Q101 134 94 124 Q87 140 80 124 Z" fill="#8c1c35"/>
-          <rect x="116" y="70" width="8" height="38" rx="2" fill="url(#gd)"/><line x1="120" y1="65" x2="120" y2="70" stroke="#3a1a1a" stroke-width="1.5"/><rect x="146" y="70" width="8" height="38" rx="2" fill="url(#gd)"/><line x1="150" y1="65" x2="150" y2="70" stroke="#3a1a1a" stroke-width="1.5"/><rect x="176" y="70" width="8" height="38" rx="2" fill="url(#gd)"/><line x1="180" y1="65" x2="180" y2="70" stroke="#3a1a1a" stroke-width="1.5"/>
-          <g class="flames"><g transform="translate(120,62)"><circle cy="-10" r="24" fill="url(#gl)" class="glow" style="animation-delay:0s"/><path class="flame" style="animation-delay:0s" d="M0 -22 C9 -12 8 -2 0 3 C-8 -2 -9 -12 0 -22Z" fill="url(#fl)"/></g><g transform="translate(150,62)"><circle cy="-10" r="24" fill="url(#gl)" class="glow" style="animation-delay:0.3s"/><path class="flame" style="animation-delay:0.3s" d="M0 -22 C9 -12 8 -2 0 3 C-8 -2 -9 -12 0 -22Z" fill="url(#fl)"/></g><g transform="translate(180,62)"><circle cy="-10" r="24" fill="url(#gl)" class="glow" style="animation-delay:0.6s"/><path class="flame" style="animation-delay:0.6s" d="M0 -22 C9 -12 8 -2 0 3 C-8 -2 -9 -12 0 -22Z" fill="url(#fl)"/></g></g>
-        </svg>
-      </button>
+  <div class="view" id="v-weather" hidden>
+    <a class="back" href="#home">← 홈으로</a>
+    <h2 class="vt">🌤️ 11/28(토) 파티 날씨</h2>
+    <div class="msgs" id="weather-box">
+      <div class="card w-loading">실시간 날씨 예보를 불러오는 중입니다... ❄️</div>
     </div>
-    <p class="cakehint" id="cakehint">촛불을 눌러서 후~ 불어보세요 💨</p>
+    <div class="w-meta">
+      <span id="weather-updated">기준: 2026년 11월 28일 (토) 예보</span>
+      <button type="button" class="w-refresh" id="weather-reload">새로고침 ↻</button>
+    </div>
   </div>
 </main>
 <script>
 (function(){
   // 눈 내리는 효과
   var s=document.getElementById('snow'),ch=['❄','❅','·','✦'];
-  for(var i=0;i<26;i++){
+  for(var i=0;i<28;i++){
     var d=document.createElement('span');d.className='f';
     d.textContent=ch[i%ch.length];
     d.style.left=Math.random()*100+'%';
@@ -233,91 +301,103 @@ h2.vt{font-size:22px;margin:6px 0 16px}
     d.style.animationDelay=(-Math.random()*18)+'s';
     s.appendChild(d);
   }
-  // 케이크 촛불
-  var cbtn=document.getElementById('cake'),hint=document.getElementById('cakehint'),wrap=document.getElementById('cakewrap');
-  cbtn.addEventListener('click',function(){
-    var out=cbtn.classList.toggle('out');
-    hint.textContent=out?'생일 축하해, 여림! 소원이 꼭 이루어질 거예요 ✨':'촛불을 눌러서 후~ 불어보세요 💨';
-    if(out){for(var k=0;k<14;k++){
-      var p=document.createElement('span');p.className='sp';p.textContent='✦';
-      p.style.left=(20+Math.random()*60)+'%';
-      p.style.setProperty('--dx',(Math.random()*80-40)+'px');
-      p.style.animationDelay=(Math.random()*.3)+'s';
-      wrap.appendChild(p);
-      (function(el){setTimeout(function(){el.remove()},2000)})(p);
-    }}
-  });
-  // D-day
+
+  // D-day (2026년 11월 28일)
   var t=new Date(2026,10,28),n=new Date();n.setHours(0,0,0,0);
   var diff=Math.round((t-n)/86400000),el=document.getElementById('dday');
   if(diff>0)el.textContent='D-'+diff;else if(diff===0)el.textContent='D-DAY 🎉';
-  // 축하 메시지 (DB_URL을 채우면 모두에게 공유돼요)
-  var DB_URL='';
-  var mname=document.getElementById('mname'),mtext=document.getElementById('mtext'),msend=document.getElementById('msend'),mnote=document.getElementById('mnote'),mlist=document.getElementById('mlist'),mcount=document.getElementById('mcount');
-  var base=DB_URL.replace(/\/$/,'');
-  function note(t){mnote.textContent=t}
-  function lsGet(k){try{return localStorage.getItem(k)}catch(e){return null}}
-  function lsSet(k,v){try{localStorage.setItem(k,v)}catch(e){}}
-  function fmt(ts){var d=new Date(ts);return (d.getMonth()+1)+'/'+d.getDate()+' '+('0'+d.getHours()).slice(-2)+':'+('0'+d.getMinutes()).slice(-2)}
-  function readLocal(){try{return JSON.parse(lsGet('hpbd_msgs')||'[]')}catch(e){return []}}
-  function renderMsgs(a){
-    a.sort(function(x,y){return (y.ts||0)-(x.ts||0)});
-    mlist.textContent='';
-    if(!a.length){var e=document.createElement('div');e.className='card msg';e.textContent='아직 메시지가 없어요. 첫 번째 축하 메시지를 남겨 주세요 💌';mlist.appendChild(e);return}
-    a.forEach(function(m){
-      var c=document.createElement('div');c.className='card msg';
-      var p=document.createElement('p');p.textContent=m.text;p.style.whiteSpace='pre-wrap';
-      var ci=document.createElement('cite');ci.textContent='— '+m.name+' · '+fmt(m.ts);
-      c.appendChild(p);c.appendChild(ci);mlist.appendChild(c);
+
+  // 날씨 정보 (2026-11-28 강남집 & 스타필드 하남)
+  var TARGET_DATE='2026-11-28';
+  var SLOTS=[13,15,19,21];
+  var LOCS=[
+    {name:'강남집 (강남구)',sub:'13:00 집결 · 선물증정식',lat:37.5236,lon:127.0392},
+    {name:'스타필드 하남',sub:'15:00 쇼핑 · 19:00 둔촌동 이동',lat:37.5455,lon:127.2237}
+  ];
+  function wmoInfo(code){
+    if(code===0)return{ico:'☀️',txt:'맑음'};
+    if(code<=2)return{ico:'🌤️',txt:'대체로 맑음'};
+    if(code===3)return{ico:'☁️',txt:'흐림'};
+    if(code===45||code===48)return{ico:'🌫️',txt:'안개'};
+    if((code>=51&&code<=67)||(code>=80&&code<=82))return{ico:'🌧️',txt:'비'};
+    if((code>=71&&code<=77)||(code>=85&&code<=86))return{ico:'🌨️',txt:'눈'};
+    if(code>=95)return{ico:'⛈️',txt:'뇌우'};
+    return{ico:'⛅',txt:'구름 조금'};
+  }
+  function outfitTip(minT,maxT,maxPop){
+    var tip='';
+    if(maxT<=5)tip='한겨울 추위가 예상돼요. 두꺼운 패딩이나 롱코트, 목도리를 꼭 챙기세요!';
+    else if(maxT<=10)tip='쌀쌀한 늦가을·초겨울 날씨예요. 따뜻한 코트나 경량패딩에 니트 레이어드를 추천해요.';
+    else tip='낮에는 비교적 포근하지만 저녁엔 기온이 뚝 떨어져요. 따뜻한 아우터를 꼭 챙겨주세요.';
+    if(minT<=2)tip+=' 저녁(19~21시) 귀가길은 매우 추우니 보온에 신경 써주세요 🧣';
+    if(maxPop>=40)tip+=' 강수 확률이 있으니 작은 우산도 챙기시면 좋아요 ☂️';
+    return tip;
+  }
+  var weatherLoaded=false;
+  function loadWeather(force){
+    if(weatherLoaded&&!force)return;
+    var box=document.getElementById('weather-box');
+    box.innerHTML='<div class="card w-loading">11월 28일(토) 실시간 예보를 불러오는 중입니다... ❄️</div>';
+    Promise.all(LOCS.map(function(loc){
+      var url='https://api.open-meteo.com/v1/forecast?latitude='+loc.lat+'&longitude='+loc.lon
+        +'&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max'
+        +'&hourly=temperature_2m,weather_code,precipitation_probability'
+        +'&timezone=Asia%2FSeoul&start_date='+TARGET_DATE+'&end_date='+TARGET_DATE;
+      return fetch(url).then(function(r){if(!r.ok)throw new Error('HTTP '+r.status);return r.json();});
+    })).then(function(results){
+      weatherLoaded=true;
+      var html='',allMin=99,allMax=-99,allPop=0;
+      results.forEach(function(data,idx){
+        var loc=LOCS[idx],d=data.daily,h=data.hourly;
+        var minT=Math.round(d.temperature_2m_min[0]);
+        var maxT=Math.round(d.temperature_2m_max[0]);
+        var pop=d.precipitation_probability_max[0]||0;
+        var info=wmoInfo(d.weather_code[0]);
+        if(minT<allMin)allMin=minT;
+        if(maxT>allMax)allMax=maxT;
+        if(pop>allPop)allPop=pop;
+        var hHtml='';
+        SLOTS.forEach(function(hr){
+          var key=TARGET_DATE+'T'+(hr<10?'0'+hr:hr)+':00';
+          var pos=h.time.indexOf(key);
+          if(pos>=0){
+            var hi=wmoInfo(h.weather_code[pos]);
+            var ht=Math.round(h.temperature_2m[pos]);
+            var hp=h.precipitation_probability[pos]||0;
+            hHtml+='<div class="w-h"><time>'+hr+':00</time><div class="hi">'+hi.ico+'</div><span class="ht">'+ht+'°</span><span class="hp">💧'+hp+'%</span></div>';
+          }
+        });
+        html+='<div class="card w-card">'
+          +'<div class="w-top">'
+            +'<div class="w-loc"><b>'+loc.name+'</b><small>'+loc.sub+'</small></div>'
+            +'<div class="w-main"><div class="w-ico">'+info.ico+'</div><div><div class="w-temp">'+minT+'° / '+maxT+'°</div><div class="w-desc">'+info.txt+' · 강수 '+pop+'%</div></div></div>'
+          +'</div>'
+          +'<div class="w-hours">'+hHtml+'</div>'
+        +'</div>';
+      });
+      html+='<div class="w-tip"><b>🧥 파티 옷차림 추천</b><br>'+outfitTip(allMin,allMax,allPop)+'</div>';
+      box.innerHTML=html;
+      var now=new Date();
+      var hh=String(now.getHours()).padStart(2,'0'),mm=String(now.getMinutes()).padStart(2,'0');
+      document.getElementById('weather-updated').textContent='11/28(토) 실시간 예보 · '+hh+':'+mm+' 업데이트';
+    }).catch(function(){
+      box.innerHTML='<div class="card w-card">'
+        +'<div class="w-loc"><b>11월 28일 (토) 날씨 안내</b><small>네트워크 연결이 원활하지 않아 실시간 예보를 불러오지 못했습니다.</small></div>'
+        +'<div class="w-tip"><b>🧥 늦가을·초겨울 옷차림 팁</b><br>11월 말 서울·하남 지역은 저녁 기온이 크게 떨어지니 따뜻한 코트나 패딩을 챙겨주세요! 아래 새로고침 버튼을 누르거나 네이버 날씨에서 확인하실 수 있어요.</div>'
+        +'<div class="mapbtns"><a href="https://search.naver.com/search.naver?query=%EA%B0%95%EB%82%A8%EA%B5%AC+%EB%82%A0%EC%94%A8" target="_blank" rel="noopener">강남 날씨 보기</a><a href="https://search.naver.com/search.naver?query=%ED%95%98%EB%82%A8+%EB%82%A0%EC%94%A8" target="_blank" rel="noopener">하남 날씨 보기</a></div>'
+      +'</div>';
     });
   }
-  function loadMsgs(){
-    if(!base){renderMsgs(readLocal());return}
-    fetch(base+'/messages.json').then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(d){
-      var a=[];for(var k in (d||{})){var m=d[k];if(m&&m.text)a.push(m)}renderMsgs(a);
-    }).catch(function(){note('메시지를 불러오지 못했어요. 잠시 후 다시 시도해 주세요.')});
-  }
-  if(!base)note('※ 아직 공유 설정 전이라 지금은 이 기기에서만 보여요.');
-  mname.value=lsGet('hpbd_name')||'';
-  function updCount(){mcount.textContent=mtext.value.length+'/300'}
-  mtext.addEventListener('input',updCount);
-  document.querySelectorAll('.em').forEach(function(b){
-    b.addEventListener('mousedown',function(e){e.preventDefault()});
-    b.addEventListener('click',function(){
-      var e=b.getAttribute('data-e'),s=mtext.selectionStart||0,t=mtext.selectionEnd||0,v=mtext.value;
-      if(v.length+e.length>300)return;
-      mtext.value=v.slice(0,s)+e+v.slice(t);
-      mtext.focus();mtext.selectionStart=mtext.selectionEnd=s+e.length;updCount();
-    });
-  });
-  msend.addEventListener('click',function(){
-    var text=mtext.value.trim();
-    if(!text){note('메시지를 입력해 주세요 ✍️');return}
-    var m={name:(mname.value.trim()||'익명').slice(0,20),text:text.slice(0,300),ts:Date.now()},p;
-    lsSet('hpbd_name',mname.value.trim());
-    msend.disabled=true;
-    if(base){p=fetch(base+'/messages.json',{method:'POST',body:JSON.stringify(m)}).then(function(r){if(!r.ok)throw 0})}
-    else{var a=readLocal();a.push(m);lsSet('hpbd_msgs',JSON.stringify(a));p=Promise.resolve()}
-    p.then(function(){mtext.value='';updCount();note('전해졌어요! 고마워요 💌');loadMsgs()},function(){note('전송에 실패했어요. 잠시 후 다시 시도해 주세요.')}).then(function(){setTimeout(function(){msend.disabled=false},3000)});
-  });
-  setInterval(function(){if(!document.getElementById('v-messages').hidden&&!document.hidden)loadMsgs()},20000);
-  // 주소 복사
-  document.querySelectorAll('[data-copy]').forEach(function(b){
-    b.addEventListener('click',function(){
-      var t=b.getAttribute('data-copy');
-      var done=function(){var o=b.textContent;b.textContent='복사됐어요 ✓';setTimeout(function(){b.textContent=o},1500)};
-      if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done,function(){window.prompt('주소를 복사하세요',t)})}
-      else{window.prompt('주소를 복사하세요',t)}
-    });
-  });
+  document.getElementById('weather-reload').addEventListener('click',function(){loadWeather(true);});
+
   // 화면 전환 (해시 라우팅)
-  var views=['home','schedule','route','messages','wish'];
+  var views=['home','schedule','route','messages','weather'];
   function show(){
     var id=(location.hash||'#home').slice(1);
     if(views.indexOf(id)<0)id='home';
     views.forEach(function(v){document.getElementById('v-'+v).hidden=(v!==id)});
+    if(id==='weather')loadWeather(false);
     window.scrollTo(0,0);
-    if(id==='messages')loadMsgs();
   }
   window.addEventListener('hashchange',show);
   show();
