@@ -276,17 +276,18 @@ footer{
 .gbtn{width:150px;height:150px;border-radius:50%;border:3px solid var(--gold);background:radial-gradient(circle at 50% 35%,rgba(240,207,133,.3),rgba(115,24,46,.85));font-size:76px;cursor:pointer;box-shadow:0 0 28px rgba(240,207,133,.35);-webkit-tap-highlight-color:transparent;touch-action:manipulation;transition:transform .08s}
 .gbtn:active{transform:scale(.9)}
 .gtotal{margin-top:16px;font-family:"Cinzel","Noto Serif KR",serif;font-weight:900;font-size:38px;color:var(--gold-light)}
-.plus{position:absolute;left:50%;top:10px;color:var(--gold-light);font-weight:900;font-size:22px;pointer-events:none;animation:plus .8s ease-out forwards}
-@keyframes plus{from{opacity:1;transform:translate(-50%,0)}to{opacity:0;transform:translate(-50%,-80px)}}
+.plus{position:absolute;left:50%;top:4px;width:40px;height:40px;margin-left:-20px;pointer-events:none;filter:drop-shadow(0 3px 5px rgba(0,0,0,.45));animation:coinup 1s ease-out forwards}
+.plus svg{width:100%;height:100%;display:block}
+@keyframes coinup{0%{opacity:0;transform:translate(0,10px) perspective(300px) rotateY(0deg) scale(.6)}15%{opacity:1}45%{transform:translate(calc(var(--dx,0px)*.6),-70px) perspective(300px) rotateY(540deg) scale(1.1)}100%{opacity:0;transform:translate(var(--dx,0px),-125px) perspective(300px) rotateY(1080deg) scale(.9)}}
 .wlink{color:var(--gold-light);font-size:13px;margin-left:6px;font-weight:700}
 
 /* v5 additions */
 .giftbanner{display:flex;align-items:center;gap:16px;padding:22px 20px;margin:14px 0 0;border-radius:26px;text-decoration:none;color:var(--ink);border:2px solid var(--gold);background:linear-gradient(135deg,rgba(240,207,133,.4),rgba(130,26,52,.88) 72%);animation:gbglow 2.4s ease-in-out infinite alternate;-webkit-tap-highlight-color:transparent}
 .giftbanner:active{transform:scale(.98)}
 @keyframes gbglow{from{box-shadow:0 0 0 6px rgba(240,207,133,.08),0 14px 34px rgba(0,0,0,.4)}to{box-shadow:0 0 0 9px rgba(240,207,133,.2),0 0 32px rgba(240,207,133,.42)}}
-.gb-ico{font-size:66px;line-height:1;flex:none;filter:drop-shadow(0 4px 10px rgba(0,0,0,.4))}
-.gb-txt{flex:1;display:grid;gap:5px;justify-items:start}
-.gb-txt b{font-family:"Nanum Myeongjo","Noto Serif KR",serif;font-weight:800;font-size:22px;letter-spacing:.5px;color:var(--gold-light)}
+.gb-ico{font-size:clamp(50px,15vw,66px);line-height:1;flex:none;filter:drop-shadow(0 4px 10px rgba(0,0,0,.4))}
+.gb-txt{flex:1;min-width:0;display:grid;gap:5px;justify-items:start}
+.gb-txt b{font-family:"Nanum Myeongjo","Noto Serif KR",serif;font-weight:800;font-size:clamp(16px,5.4vw,22px);letter-spacing:0;white-space:nowrap;color:var(--gold-light)}
 .gb-txt small{font-size:13.5px;font-weight:600;line-height:1.55}
 .gb-go{margin-top:4px;padding:5px 14px;border-radius:999px;background:var(--gold);color:#3a0a16;font-weight:800;font-size:13px}
 .w-hours{grid-template-columns:repeat(auto-fill,minmax(62px,1fr))}
@@ -295,10 +296,23 @@ footer{
 .w-h .ht{font-size:16px}
 .w-h .hp{font-size:11.5px}
 @media (prefers-reduced-motion: reduce){.giftbanner{animation:none}}
+/* v6 weather compact */
+.w-card{gap:10px;padding:14px 16px}
+.w-hours{grid-template-columns:repeat(4,1fr);gap:6px;padding-top:10px}
+.w-h{padding:8px 2px;border-radius:10px}
+.w-h time{font-size:12px;margin-bottom:2px}
+.w-h .hi{font-size:22px;line-height:1.2}
+.w-h .ht{font-size:15px;margin-top:2px}
+.w-h .hp{font-size:11px;line-height:1.35}
+.w-ico{font-size:28px}
+.w-temp{font-size:22px}
+.w-loc b{font-size:15.5px}
+.w-sum{padding:6px 10px;font-size:12.5px}
 </style>
 </head>
 <body>
 <div id="snow" aria-hidden="true"></div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs><linearGradient id="coinG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff2b8"/><stop offset=".45" stop-color="#f2c14e"/><stop offset="1" stop-color="#b9801f"/></linearGradient></defs></svg>
 <main>
   <div class="lights" aria-hidden="true"></div>
 
@@ -441,6 +455,7 @@ footer{
   // 날씨 정보 (2026-11-28 강남집 & 스타필드 하남)
   var TARGET_DATE='2026-11-28';
   var SLOTS=[13,14,15,16,17,18,19,20,21];
+  var SHOW=[13,15,17,19];
   var LOCS=[
     {name:'강남집 (강남구)',sub:'13:00 집결 · 선물증정식',lat:37.5236,lon:127.0392},
     {name:'스타필드 하남',sub:'15:00 쇼핑 · 19:00 둔촌동 이동',lat:37.5455,lon:127.2237}
@@ -487,7 +502,7 @@ footer{
           if(pos>=0){
             var info=wmoInfo(h.weather_code[pos]),tp=Math.round(h.temperature_2m[pos]),hp=h.precipitation_probability[pos]||0;
             temps.push(tp);
-            hHtml+='<div class="w-h"><time>'+hr+'시</time><div class="hi">'+info.ico+'</div><span class="ht">'+tp+'°</span><span class="hp">'+info.s+'</span><span class="hp">💧'+hp+'%</span></div>';
+            if(SHOW.indexOf(hr)>=0)hHtml+='<div class="w-h"><time>'+hr+'시</time><div class="hi">'+info.ico+'</div><span class="ht">'+tp+'°</span><span class="hp">'+info.s+'</span><span class="hp">💧'+hp+'%</span></div>';
           }
         });
         var sum=temps.length?'11/28 '+SLOTS[0]+'~'+SLOTS[SLOTS.length-1]+'시 · 최저 '+Math.min.apply(null,temps)+'° / 최고 '+Math.max.apply(null,temps)+'°':'';
@@ -698,12 +713,13 @@ footer{
         gTimer=setTimeout(gFlush,Math.min(8000,1000*gFail));
       });
   }
+  var COIN='<svg viewBox="-20 -20 40 40" aria-hidden="true"><circle r="19" fill="url(#coinG)" stroke="#9a6a14" stroke-width="1"/><circle r="17" fill="none" stroke="#a9741a" stroke-width="2.2" stroke-dasharray="1.3 1.3" opacity=".8"/><circle r="13.5" fill="#f7d774" stroke="#b07a1c" stroke-width="1"/><path d="M-7.5 -5.5 L-4 5.5 L0 -3 L4 5.5 L7.5 -5.5" fill="none" stroke="#8a5a0f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M-8.5 -1.7 H8.5 M-8.5 1.8 H8.5" stroke="#8a5a0f" stroke-width="1.5" stroke-linecap="round"/><path d="M-11 -6 A13 13 0 0 1 0 -13" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" opacity=".55"/></svg>';
   gBtn.addEventListener('click',function(){
     gPending++;gRender();
     if(gWrap.querySelectorAll('.plus').length<10){
-      var s=document.createElement('span');s.className='plus';s.textContent='+1';
-      s.style.marginLeft=(Math.random()*70-35)+'px';gWrap.appendChild(s);
-      setTimeout(function(){if(s.parentNode)s.parentNode.removeChild(s);},850);
+      var s=document.createElement('span');s.className='plus';s.innerHTML=COIN;
+      s.style.setProperty('--dx',(Math.random()*90-45)+'px');gWrap.appendChild(s);
+      setTimeout(function(){if(s.parentNode)s.parentNode.removeChild(s);},1000);
     }
     if(!gTimer&&!gSending)gTimer=setTimeout(gFlush,700);
   });
