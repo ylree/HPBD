@@ -4,6 +4,15 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex,nofollow">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="여림이의 생일파티">
+<meta property="og:title" content="🎂 여림이의 생일파티">
+<meta property="og:description" content="11월 28일 (토) · Welcome to 35 ✨ 가족 모임에 초대해요">
+<meta property="og:url" content="https://ylree.github.io/HPBD/">
+<meta property="og:image" content="https://ylree.github.io/HPBD/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <title>여림이의 생일 파티</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -651,32 +660,55 @@ footer{
     },function(){note.textContent='위치 권한이 필요해요. 브라우저 설정에서 허용한 뒤 다시 눌러주세요.';},{timeout:10000});
   });
 
-  // ===== 용돈 이벤트 (선물 상자 1원씩) =====
+  // ===== 용돈 이벤트 (선물 상자 1원씩) — 안정형 카운터 =====
+  // 화면 숫자 = 서버 확정값 + 전송 중 + 아직 안 보낸 클릭. 합계는 절대 줄어들지 않고, 전송은 한 번에 하나씩만 해요.
   var gBtn=document.getElementById('g-btn'),gWrap=document.getElementById('g-wrap'),
       gEl=document.getElementById('g-total'),gNote=document.getElementById('g-note');
-  var gTotal=0,gPending=0,gTimer=null,gPoll=null;
+  var gConfirmed=0,gInflight=0,gPending=0,gShown=0,gSending=false,gSendCount=0,gTimer=null,gPoll=null,gFail=0;
   gNote.textContent=DB_URL?'모두가 누른 횟수가 함께 쌓여요.':'지금은 이 기기에서 누른 횟수만 쌓여요.';
-  function gShow(){gEl.textContent=(gTotal+gPending).toLocaleString('ko-KR');}
-  function gLoad(){
-    if(!DB_URL){try{gTotal=parseInt(localStorage.getItem('gift')||'0',10)||0;}catch(e){}gShow();return;}
-    fetch(DB_URL+'/gift/total.json').then(function(r){return r.json();}).then(function(v){gTotal=+v||0;gShow();}).catch(function(){});
+  function gRender(){
+    var v=gConfirmed+gInflight+gPending;
+    if(v>gShown)gShown=v;
+    gEl.textContent=gShown.toLocaleString('ko-KR');
   }
-  function gFlush(){
-    gTimer=null;var n=gPending;if(!n)return;
-    if(!DB_URL){gTotal+=n;gPending=0;try{localStorage.setItem('gift',String(gTotal));}catch(e){}gShow();return;}
-    gPending=0;
-    fetch(DB_URL+'/gift/total.json',{method:'PUT',body:JSON.stringify({'.sv':{increment:n}})})
-      .then(function(r){return r.json();})
-      .then(function(v){gTotal=(typeof v==='number')?v:gTotal+n;gShow();})
-      .catch(function(){gPending+=n;gShow();});
+  function gLoad(){
+    if(!DB_URL){try{gConfirmed=parseInt(localStorage.getItem('gift')||'0',10)||0;}catch(e){}gRender();return;}
+    if(gSending)return;
+    var tok=gSendCount;
+    fetch(DB_URL+'/gift/total.json').then(function(r){return r.json();}).then(function(v){
+      if(gSending||tok!==gSendCount)return;
+      v=+v||0;if(v>gConfirmed)gConfirmed=v;gRender();
+    }).catch(function(){});
+  }
+  function gFlush(keep){
+    gTimer=null;
+    if(gSending||!gPending)return;
+    var n=gPending;
+    if(!DB_URL){gConfirmed+=n;gPending=0;try{localStorage.setItem('gift',String(gConfirmed));}catch(e){}gRender();return;}
+    gSending=true;gSendCount++;gInflight=n;gPending=0;
+    fetch(DB_URL+'/gift/total.json',{method:'PUT',body:JSON.stringify({'.sv':{increment:n}}),keepalive:!!keep})
+      .then(function(r){if(!r.ok)throw new Error('x');return r.json();})
+      .then(function(v){
+        gConfirmed=(typeof v==='number')?Math.max(v,gConfirmed+n):gConfirmed+n;
+        gInflight=0;gFail=0;gSending=false;gRender();
+        if(gPending)gTimer=setTimeout(gFlush,250);
+      })
+      .catch(function(){
+        gPending+=gInflight;gInflight=0;gSending=false;gFail++;gRender();
+        gTimer=setTimeout(gFlush,Math.min(8000,1000*gFail));
+      });
   }
   gBtn.addEventListener('click',function(){
-    gPending++;gShow();
-    var s=document.createElement('span');s.className='plus';s.textContent='+1';
-    s.style.marginLeft=(Math.random()*70-35)+'px';gWrap.appendChild(s);
-    setTimeout(function(){if(s.parentNode)s.parentNode.removeChild(s);},850);
-    if(!gTimer)gTimer=setTimeout(gFlush,800);
+    gPending++;gRender();
+    if(gWrap.querySelectorAll('.plus').length<10){
+      var s=document.createElement('span');s.className='plus';s.textContent='+1';
+      s.style.marginLeft=(Math.random()*70-35)+'px';gWrap.appendChild(s);
+      setTimeout(function(){if(s.parentNode)s.parentNode.removeChild(s);},850);
+    }
+    if(!gTimer&&!gSending)gTimer=setTimeout(gFlush,700);
   });
+  document.addEventListener('visibilitychange',function(){if(document.hidden&&gPending&&!gSending)gFlush(true);});
+  window.addEventListener('pagehide',function(){if(gPending&&!gSending)gFlush(true);});
 
   // 화면 전환 (해시 라우팅)
   var views=['home','schedule','route','messages','weather','gift'];
